@@ -1,0 +1,17 @@
+{
+  "name": "pneasync",
+  "version": "1.0.0",
+  "description": "Converts nested async to Promise.all",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "async",
+    "promise",
+    "promise.all",
+    "nested async"
+  ],
+  "author": "akshat tripathi, vmt.eiz@gmail.com",
+  "license": "ISC"
+}
