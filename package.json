@@ -1,5 +1,5 @@
 {
-  "name": "@kumsin/pneasync",
+  "name": "@humptydumptyeiz/pneasync",
   "version": "1.0.0",
   "description": "A tool to promisify nested async/await",
   "main": "index.js",
@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/humptydumptyeiz/pneAsync/issues"
   },
-  "homepage": "https://github.com/humptydumptyeiz/pneAsync#readme"
+  "homepage": "https://github.com/humptydumptyeiz/pneAsync#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
 }

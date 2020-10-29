@@ -2,6 +2,13 @@
 
 ## A handy tool to promisify nested arrays
 
+
+***Installation***
+
+``
+npm i @humptydumptyeiz/pneasync
+``
+
 ***Usage :***
 
 Suppose args is an array of objects which define some category, each object having categoryId as a property. Suppose
