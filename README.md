@@ -1,4 +1,4 @@
-# pNeAsync
+# p(romisify)Ne(sted)Async
 
 ## A handy tool to promisify nested arrays
 
@@ -34,7 +34,7 @@ To resolve this, use pNeAsync.
 **Return Value**
 
 1. ``failFast === true && Exception`` - exception will be raised
-2. ``failFat === false && Exception``  -  
+2. ``failFast === false && Exception``  -  
 ```
       [result, [{
            object:    // object under use when exception occurred,
@@ -51,7 +51,8 @@ arg, foo and typeOfArg for increasing depths of nesting
 
     
       const list = [{id: 1, name: 'a'}, {id: 2, name: 'b'}, ...];
-      const factors = [{arg: 'id', typeOfArg: 'property', foo: someAsyncFoo}, {arg: 'subCatId', typeOfArg: 'property', foo: anotherAsyncFoo}];
+      const factors = [{arg: 'id', typeOfArg: 'property', foo: someAsyncFoo},
+                       {arg: 'subCatId', typeOfArg: 'property', foo: anotherAsyncFoo}];
       
       async function anyFunction(arr){
         return await pneAsync(list, factors)
