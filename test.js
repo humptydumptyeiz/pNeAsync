@@ -1,12 +1,22 @@
+const util = require('util');
+
 const pneAsync = require('./index');
 
 
-const asyncFunc = async () => new Promise(resolve =>
-    setTimeout(resolve, getRandomArbitrary(1000, 1500), [1,'e',3,4,'f',6] ));
+const asyncFunc = async () => new Promise((resolve, reject) =>
+    setTimeout(() => {
+        const rej = getRandomArbitrary(0,10) % 2 === 0;
+        if(rej){
+            reject(Error('Dummy Error'));
+        } else {
+            resolve([1,2,3]);
+        }
+        // resolve([1,2,3])
+    }, getRandomArbitrary(100, 500) ));
 
 
 const  getRandomArbitrary = (min, max) =>
-    Math.random() * (max - min) + min;
+    Math.ceil(Math.random() * (max - min) + min);
 
 
 const test = async () => {
@@ -24,13 +34,30 @@ const test = async () => {
             arg: 3,
             typeOfArg: 'value',
             foo: asyncFunc
-        }]);
+        },
+        {
+            arg: 4,
+            typeOfArg: 'value',
+            foo: asyncFunc
+        },
+        {
+            arg: 5,
+            typeOfArg: 'value',
+            foo: asyncFunc
+        },
+        {
+            arg: 7,
+            typeOfArg: 'value',
+            foo: asyncFunc
+        }], false);
 };
 
 
 Promise.resolve(test())
     .then(res => {
-        console.log(JSON.stringify(res));
+        console.log(util.inspect(res[0], true, null));
+        console.log(res[1])
+        // console.log(JSON.stringify(res));
         console.log('******** Program Ended ********')
     });
 

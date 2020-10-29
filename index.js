@@ -2,13 +2,33 @@
     const {arg, typeOfArg, asyncFunc} = factorList[ix]
  */
 
-const pneAsync = async (list, factorList) => {
-
+const pNeAsync = async (list, factorList, failFast=true) => {
+    const errors = [];
     async function recur(data, ix = 0){
         const {arg, typeOfArg, foo} = factorList[ix];
         return await Promise.all(data.map(async datum => {
-            const res = typeOfArg === 'value' ?
-                await foo(arg) : await foo(datum[arg]);
+            let res;
+            try{
+                res = typeOfArg === 'value' ?
+                    await foo(arg) : await foo(datum[arg]);
+            } catch(err){
+                if(failFast){
+                    throw err;
+                }
+                errors.push({
+                    object: datum,
+                    depth: ix,
+                    arg,
+                    typeOfArg,
+                    foo,
+                    error: err
+                });
+                return {
+                    parent: datum,
+                    children: 'error'
+                }
+            }
+
             if(ix === factorList.length - 1){
                 return {
                     parent: datum,
@@ -21,13 +41,23 @@ const pneAsync = async (list, factorList) => {
                             parent: datum,
                             children
                         }))
-                        .catch(err => reject(err));
+                        .catch(err => {
+                            if(failFast){
+                                throw err;
+                            }
+                        })
                 });
             }
-        }));
+        }))
+            .catch(err => {
+                if(failFast){
+                    throw err;
+                }
+            });
     }
 
-    return await recur(list);
+   const res = await recur(list);
+    return [res, errors];
 };
 
-module.exports = pneAsync;
+module.exports = pNeAsync;
