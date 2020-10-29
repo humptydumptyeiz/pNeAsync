@@ -1,17 +1,28 @@
 {
-  "name": "pneasync",
+  "name": "@kumsin/pneasync",
   "version": "1.0.0",
-  "description": "Converts nested async to Promise.all",
+  "description": "A tool to promisify nested async/await",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/humptydumptyeiz/pneAsync.git"
+  },
   "keywords": [
-    "async",
+    "promisify",
     "promise",
     "promise.all",
-    "nested async"
+    "nest",
+    "nested",
+    "async",
+    "await"
   ],
   "author": "akshat tripathi, vmt.eiz@gmail.com",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/humptydumptyeiz/pneAsync/issues"
+  },
+  "homepage": "https://github.com/humptydumptyeiz/pneAsync#readme"
 }
