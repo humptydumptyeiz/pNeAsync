@@ -9,6 +9,12 @@
 npm i @humptydumptyeiz/pneasync
 ``
 
+***Run Tests***
+
+``
+npm test
+``
+
 ***Usage :***
 
 Suppose args is an array of objects which define some category, each object having categoryId as a property. Suppose
@@ -42,8 +48,20 @@ To resolve this, use pNeAsync.
 
 1. ``failFast === true && Exception`` - exception will be raised
 2. ``failFast === false && Exception``  -  
-```
-      [result, [{
+```   
+      [[// this is the result 
+        {
+            parent: obj1,
+            children: [
+                {
+                   parent: obj2
+                   children: [...]   
+                },
+                ...
+            ]
+        },
+        ...
+       ], [{      // this is the error array
            object:    // object under use when exception occurred,
            depth:     // depth of nesting at which the exception occurred,
            arg        // arg variable from factorList element,
