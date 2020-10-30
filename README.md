@@ -29,15 +29,13 @@ To resolve this, use pNeAsync.
 
 
 **Arguments** 
-1. array to iterate over.
+1. list - array to iterate over.
 2. factorList - it is an array each of whose element is an object of the form - 
 
       
         {
-          arg:        // argument to pass to async function for each element,
-          foo:        // async function to call with arg,
-          typeOfArg:  // if it is === 'value' then the arg value will be used as the argument of foo else elem[arg]
-                     // will be used
+          argFoo:     // function which takes in each element of the list
+          foo:        // async function which takes the value returned by argFoo as argument
         }
 3. failFast - default value is ``true``. When ``true`` the function will throw errors and instead of handling them and
               will cause exception.
@@ -76,8 +74,8 @@ arg, foo and typeOfArg for increasing depths of nesting
 
     
       const list = [{id: 1, name: 'a'}, {id: 2, name: 'b'}, ...];
-      const factors = [{arg: 'id', typeOfArg: 'property', foo: someAsyncFoo},
-                       {arg: 'subCatId', typeOfArg: 'property', foo: anotherAsyncFoo}];
+      const factors = [{argFoo: elm => elm.id, foo: someAsyncFoo},
+                       {argFoo: elm => elm.subCategoryId, foo: anotherAsyncFoo}];
       
       async function anyFunction(arr){
         return await pneAsync(list, factors)
