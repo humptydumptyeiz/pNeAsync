@@ -1,10 +1,10 @@
 {
   "name": "@humptydumptyeiz/pneasync",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A tool to promisify nested async/await",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests"
+    "test": "mocha tests/test.js"
   },
   "repository": {
     "type": "git",

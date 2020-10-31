@@ -10,11 +10,6 @@ const asyncSomeErrorsFunc = async arg => await new Promise((resolve, reject) =>
 const asyncNoErrorFunc = async arg => await new Promise((resolve, reject) =>
     setTimeout(resolve, 0, inputArr));
 
-const  getRandomInRange = (min, max) =>
-    Math.ceil(Math.random() * (max - min) + min);
-
-
-const timeout = 10000;
 
 const inputArr = [
     {id: 1},
@@ -41,7 +36,6 @@ const factorListSomeErrors = [
 ];
 
 describe('pneAsync when no exception is raised by any of the async functions', function() {
-    this.timeout(timeout);
     it('a result array and an empty errors array is returned', async function(){
         let result, errors,
             error = null;
